@@ -7,6 +7,7 @@ public class Dete {
 	private String ime;
 	private String prezime;
 	private String adresa;
+	private String grad;
 	private boolean odabrano;
 	private int godine;
 	
@@ -58,6 +59,12 @@ public class Dete {
 	}
 	public void setGodine(int godine) {
 		this.godine = godine;
+	}
+	public String getGrad() {
+		return grad;
+	}
+	public void setGrad(String grad) {
+		this.grad = grad;
 	}
 	
 	

@@ -7,8 +7,9 @@ public class Korisnik {
 	private String prezime;
 	private String broj_telefona;
 	private int id_deteta;
+	private String email;
 	
-	
+
 	public Korisnik() {
 		super();
 	}
@@ -53,7 +54,14 @@ public class Korisnik {
 		this.id_deteta = id_deteta;
 	}
 	
-	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	
 	
 	
