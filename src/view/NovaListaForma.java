@@ -17,6 +17,8 @@ import javax.swing.JTextArea;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.awt.Color;
 
 public class NovaListaForma extends JFrame {
 
@@ -26,6 +28,7 @@ public class NovaListaForma extends JFrame {
 	private String wishlist = "";
 	private JTextArea textArea;
 	private JComboBox comboBox_Child;
+	private JPanel panel;
 
 	/**
 	 * Create the frame.
@@ -40,6 +43,7 @@ public class NovaListaForma extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Item:");
+		lblNewLabel.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
 		lblNewLabel.setBounds(40, 119, 45, 13);
 		contentPane.add(lblNewLabel);
 		
@@ -49,6 +53,8 @@ public class NovaListaForma extends JFrame {
 		tf_item.setColumns(10);
 		
 		JButton btnAddItem = new JButton("Add");
+		btnAddItem.setBackground(new Color(221, 160, 221));
+		btnAddItem.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
 		btnAddItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				wishlist=wishlist+"\n"+tf_item.getText();
@@ -68,19 +74,28 @@ public class NovaListaForma extends JFrame {
 		contentPane.add(comboBox_Child);
 		
 		JLabel lblNewLabel_1 = new JLabel("Select a child");
+		lblNewLabel_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
 		lblNewLabel_1.setBounds(40, 40, 90, 13);
 		contentPane.add(lblNewLabel_1);
 		
 		JButton btnNewButton = new JButton("Create");
+		btnNewButton.setBackground(new Color(221, 160, 221));
+		btnNewButton.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Dete d = (Dete)comboBox_Child.getSelectedItem();
 				Kontroler.getInstanca().dodajListu(d.getId(),wishlist);
 				textArea.setText("");
+				wishlist="";
 			}
 		});
 		btnNewButton.setBounds(197, 184, 85, 21);
 		contentPane.add(btnNewButton);
+		
+		panel = new JPanel();
+		panel.setBackground(new Color(221, 160, 221));
+		panel.setBounds(0, 0, 570, 357);
+		contentPane.add(panel);
 		
 		postaviPodatke();
 	}

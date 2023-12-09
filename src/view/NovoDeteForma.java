@@ -21,6 +21,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Font;
+import java.awt.Color;
 
 public class NovoDeteForma extends JFrame {
 
@@ -45,7 +47,7 @@ public class NovoDeteForma extends JFrame {
 	 */
 	public NovoDeteForma() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 525, 355);
+		setBounds(100, 100, 697, 388);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -53,14 +55,17 @@ public class NovoDeteForma extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Name:");
+		lblNewLabel.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
 		lblNewLabel.setBounds(54, 38, 88, 13);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Surname:");
+		lblNewLabel_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
 		lblNewLabel_1.setBounds(54, 67, 70, 13);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Address:");
+		lblNewLabel_2.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
 		lblNewLabel_2.setBounds(54, 124, 70, 13);
 		contentPane.add(lblNewLabel_2);
 		
@@ -80,6 +85,7 @@ public class NovoDeteForma extends JFrame {
 		contentPane.add(tf_address);
 		
 		JButton btnCreate = new JButton("Create");
+		btnCreate.setBackground(new Color(221, 160, 221));
 		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String ime = tf_name.getText();
@@ -123,6 +129,7 @@ public class NovoDeteForma extends JFrame {
 		contentPane.add(btnCreate);
 		
 		JButton btnUpdate = new JButton("Update");
+		btnUpdate.setBackground(new Color(221, 160, 221));
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int red=table.getSelectedRow();
@@ -136,6 +143,7 @@ public class NovoDeteForma extends JFrame {
 		contentPane.add(btnUpdate);
 		
 		JButton btnDelete = new JButton("Delete");
+		btnDelete.setBackground(new Color(221, 160, 221));
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int red=table.getSelectedRow();
@@ -148,6 +156,7 @@ public class NovoDeteForma extends JFrame {
 		contentPane.add(btnDelete);
 		
 		JButton btnNewWishlist = new JButton("New wishlist");
+		btnNewWishlist.setBackground(new Color(221, 160, 221));
 		btnNewWishlist.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				NovaListaForma nlf = new NovaListaForma();
@@ -158,7 +167,7 @@ public class NovoDeteForma extends JFrame {
 		contentPane.add(btnNewWishlist);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(264, 35, 224, 243);
+		scrollPane.setBounds(264, 35, 386, 247);
 		contentPane.add(scrollPane);
 		
 		table = new JTable(dtm);
@@ -176,6 +185,7 @@ public class NovoDeteForma extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		JLabel lblNewLabel_3 = new JLabel("Age");
+		lblNewLabel_3.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
 		lblNewLabel_3.setBounds(54, 95, 45, 13);
 		contentPane.add(lblNewLabel_3);
 		
@@ -185,6 +195,7 @@ public class NovoDeteForma extends JFrame {
 		tf_Age.setColumns(10);
 		
 		JLabel lblNewLabel_4 = new JLabel("Town:");
+		lblNewLabel_4.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
 		lblNewLabel_4.setBounds(54, 153, 45, 13);
 		contentPane.add(lblNewLabel_4);
 		
@@ -192,6 +203,11 @@ public class NovoDeteForma extends JFrame {
 		textField.setBounds(150, 150, 96, 19);
 		contentPane.add(textField);
 		textField.setColumns(10);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(221, 160, 221));
+		panel.setBounds(0, 0, 696, 367);
+		contentPane.add(panel);
 		
 		Object[] kolone = {"ID","NAME","SURNAME","AGE","ADDRESS"};
 		dtm.addColumn(kolone[0]);

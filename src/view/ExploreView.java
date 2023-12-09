@@ -22,6 +22,8 @@ import javax.swing.JTextField;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.Color;
 
 public class ExploreView extends JFrame {
 
@@ -39,6 +41,7 @@ public class ExploreView extends JFrame {
 	private JButton btnAge;
 	private JLabel from;
 	private JLabel lblNewLabel;
+	private JPanel panel;
 	
 
 	/**
@@ -79,7 +82,8 @@ public class ExploreView extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				int red=table.getSelectedRow();
 				btnNewButton.setVisible(true);
-				textArea.setText(table.getModel().getValueAt(red, 3).toString());
+				textArea.setText(table.getModel().getValueAt(red, 4).toString());
+				
 			}
 		});
 		scrollPane.setViewportView(table);
@@ -89,8 +93,13 @@ public class ExploreView extends JFrame {
 		contentPane.add(textArea);
 		
 		btnNewButton = new JButton("Choose to support");
+		btnNewButton.setBackground(new Color(221, 160, 221));
+		btnNewButton.setForeground(new Color(0, 0, 0));
+		btnNewButton.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int red=table.getSelectedRow();
+				id_dete = Integer.parseInt(table.getModel().getValueAt(red, 0).toString());
 				KorisnikForma kf = new KorisnikForma(id_dete);
 				kf.setVisible(true);
 			}
@@ -100,6 +109,7 @@ public class ExploreView extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		textField = new JTextField();
+		textField.setForeground(new Color(0, 0, 0));
 		textField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
@@ -111,6 +121,9 @@ public class ExploreView extends JFrame {
 		textField.setColumns(10);
 		
 		btnPretrazi = new JButton("Search cities");
+		btnPretrazi.setBackground(new Color(221, 160, 221));
+		btnPretrazi.setForeground(new Color(0, 0, 0));
+		btnPretrazi.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
 		btnPretrazi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ucitajPodatkePretrage(textField.getText());
@@ -122,16 +135,21 @@ public class ExploreView extends JFrame {
 		contentPane.add(btnPretrazi);
 		
 		textField_1 = new JTextField();
+		textField_1.setForeground(new Color(0, 0, 0));
 		textField_1.setBounds(542, 280, 67, 19);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
 		textField_2 = new JTextField();
+		textField_2.setForeground(new Color(0, 0, 0));
 		textField_2.setBounds(542, 309, 67, 19);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
 		btnAge = new JButton("Filter");
+		btnAge.setBackground(new Color(221, 160, 221));
+		btnAge.setForeground(new Color(0, 0, 0));
+		btnAge.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
 		btnAge.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -142,19 +160,25 @@ public class ExploreView extends JFrame {
 		btnAge.setBounds(426, 338, 187, 21);
 		contentPane.add(btnAge);
 		
-		from = new JLabel("from:");
-		from.setBounds(476, 283, 45, 13);
+		from = new JLabel("age from:");
+		from.setBounds(454, 283, 67, 13);
 		contentPane.add(from);
 		
-		lblNewLabel = new JLabel("to:");
-		lblNewLabel.setBounds(476, 312, 45, 13);
+		lblNewLabel = new JLabel("age to:");
+		lblNewLabel.setBounds(454, 312, 67, 13);
 		contentPane.add(lblNewLabel);
 		
-		Object[] kolona = {"NAME","AGE","CITY","WISHLIST"};
+		panel = new JPanel();
+		panel.setBackground(new Color(221, 160, 221));
+		panel.setBounds(0, 0, 664, 412);
+		contentPane.add(panel);
+		
+		Object[] kolona = {"ID","NAME","AGE","CITY","WISHLIST"};
 		dtm.addColumn(kolona[0]);
 		dtm.addColumn(kolona[1]);
 		dtm.addColumn(kolona[2]);
 		dtm.addColumn(kolona[3]);
+		dtm.addColumn(kolona[4]);
 		
 		prikaziPodatke();
 	}
@@ -162,7 +186,7 @@ public class ExploreView extends JFrame {
 	private void prikaziPodatke() {
 		dtm.setRowCount(0);
 		for (Podatak p : Kontroler.getInstanca().ucitajPodatke()) {
-			Object[] red = {p.getIme(),p.getGodine(),p.getGrad(),p.getLista()};
+			Object[] red = {p.getIdDete(),p.getIme(),p.getGodine(),p.getGrad(),p.getLista()};
 			dtm.addRow(red);
 		}
 		
@@ -174,7 +198,7 @@ public class ExploreView extends JFrame {
 		
 		dtm.setRowCount(0);
 		for (Podatak p : Kontroler.getInstanca().ucitajPodatkePretrage(pretraga)) {
-			Object[] red = {p.getIme(),p.getGodine(),p.getGrad(),p.getLista()};
+			Object[] red = {p.getIdDete(),p.getIme(),p.getGodine(),p.getGrad(),p.getLista()};
 			dtm.addRow(red);
 		}
 	}
@@ -183,7 +207,7 @@ public class ExploreView extends JFrame {
 		// TODO Auto-generated method stub
 		dtm.setRowCount(0);
 		for (Podatak p : Kontroler.getInstanca().filtriraj(grad,odgod,dogod)) {
-			Object[] red = {p.getIme(),p.getGodine(),p.getGrad(),p.getLista()};
+			Object[] red = {p.getIdDete(),p.getIme(),p.getGodine(),p.getGrad(),p.getLista()};
 			dtm.addRow(red);
 		}
 	}

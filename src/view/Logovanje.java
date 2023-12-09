@@ -58,20 +58,24 @@ public class Logovanje extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Username:");
 		lblNewLabel.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
-		lblNewLabel.setBounds(121, 137, 99, 13);
+		lblNewLabel.setVisible(false);
+		lblNewLabel.setBounds(121, 115, 99, 13);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Password:");
 		lblNewLabel_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
-		lblNewLabel_1.setBounds(121, 175, 82, 13);
+		lblNewLabel_1.setVisible(false);
+		lblNewLabel_1.setBounds(121, 153, 82, 13);
 		contentPane.add(lblNewLabel_1);
 		
 		tf_user = new JTextField();
-		tf_user.setBounds(208, 134, 145, 19);
+		tf_user.setBounds(208, 112, 145, 19);
+		tf_user.setVisible(false);
 		contentPane.add(tf_user);
 		tf_user.setColumns(10);
 		
 		passwordField = new JPasswordField();
+		passwordField.setVisible(false);
 		passwordField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -81,20 +85,21 @@ public class Logovanje extends JFrame {
 				
 			}
 		});
-		passwordField.setBounds(208, 172, 145, 19);
+		passwordField.setBounds(208, 150, 145, 19);
 		
 		contentPane.add(passwordField);
 		
 		JButton btnLogin = new JButton("Log As Admin");
 		btnLogin.setForeground(new Color(0, 0, 0));
 		btnLogin.setBackground(new Color(221, 160, 221));
+		btnLogin.setVisible(false);
 		btnLogin.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				login();
 			}
 		});
-		btnLogin.setBounds(121, 229, 232, 21);
+		btnLogin.setBounds(121, 194, 232, 21);
 		contentPane.add(btnLogin);
 		
 		JButton btnExploreWishlists = new JButton("Explore Wishlists");
@@ -106,7 +111,7 @@ public class Logovanje extends JFrame {
 				ev.setVisible(true);
 			}
 		});
-		btnExploreWishlists.setBounds(121, 260, 232, 21);
+		btnExploreWishlists.setBounds(121, 225, 232, 21);
 		contentPane.add(btnExploreWishlists);
 		
 		JLabel lblNewLabel_2 = new JLabel("KindHeartGifts");
@@ -116,10 +121,49 @@ public class Logovanje extends JFrame {
 		lblNewLabel_2.setBounds(121, 34, 232, 57);
 		contentPane.add(lblNewLabel_2);
 		
+		JButton btnDonate = new JButton("Donate");
+		btnDonate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DonationView dv = new DonationView();
+				dv.setVisible(true);
+			}
+		});
+		btnDonate.setForeground(Color.BLACK);
+		btnDonate.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
+		btnDonate.setBackground(new Color(221, 160, 221));
+		btnDonate.setBounds(121, 256, 232, 21);
+		contentPane.add(btnDonate);
+		
+		JButton btnAboutUs = new JButton("About us");
+		btnAboutUs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AboutUs au = new AboutUs();
+				au.setVisible(true);
+			}
+		});
+		btnAboutUs.setForeground(Color.BLACK);
+		btnAboutUs.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
+		btnAboutUs.setBackground(new Color(221, 160, 221));
+		btnAboutUs.setBounds(121, 287, 232, 21);
+		contentPane.add(btnAboutUs);
+		
+		JButton btnNewButton = new JButton("Admin");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblNewLabel.setVisible(true);
+				lblNewLabel_1.setVisible(true);
+				tf_user.setVisible(true);
+				passwordField.setVisible(true);
+				btnLogin.setVisible(true);
+			}
+		});
+		btnNewButton.setBackground(new Color(221, 160, 221));
+		btnNewButton.setBounds(21, 23, 76, 21);
+		contentPane.add(btnNewButton);
+		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(221, 160, 221));
-		panel.setForeground(new Color(221, 160, 221));
-		panel.setBounds(0, 0, 487, 336);
+		panel.setBounds(0, 0, 488, 342);
 		contentPane.add(panel);
 		
 	}

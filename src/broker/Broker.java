@@ -58,10 +58,11 @@ public class Broker {
 		List<Podatak> lista = new ArrayList();
 		
 		String sql = "SELECT * FROM dete "
-				+ "INNER JOIN wishlista ON dete.id_dete=wishlista.id_dete";
+				+ "INNER JOIN wishlista ON dete.id_dete=wishlista.id_dete WHERE status = ?";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setBoolean(1, false);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				Podatak p = new Podatak();
@@ -177,7 +178,7 @@ public class Broker {
 
 	public void upisiKorisnikaUBazu(Korisnik k) {
 		// TODO Auto-generated method stub
-		String sql = "INSERT INTO korisnik (ime,prezime,telefon,emial,id_dete) VALUES (?,?,?,?,?)";
+		String sql = "INSERT INTO korisnik (ime,prezime,telefon,email,id_dete) VALUES (?,?,?,?,?)";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, k.getIme());
@@ -213,11 +214,12 @@ public class Broker {
 		List<Podatak> lista = new ArrayList();
 		
 		String sql = "SELECT * FROM dete "
-				+ "INNER JOIN wishlista ON dete.id_dete=wishlista.id_dete WHERE grad LIKE ?";
+				+ "INNER JOIN wishlista ON dete.id_dete=wishlista.id_dete WHERE status = ? AND grad LIKE ?";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, "%"+pretraga+"%");
+			ps.setBoolean(1, false);
+			ps.setString(2, "%"+pretraga+"%");
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				Podatak p = new Podatak();
@@ -239,7 +241,7 @@ public class Broker {
 		List<Podatak> lista = new ArrayList();
 		
 		String sql = "SELECT * FROM dete "
-				+ "INNER JOIN wishlista ON dete.id_dete=wishlista.id_dete WHERE 1=1";
+				+ "INNER JOIN wishlista ON dete.id_dete=wishlista.id_dete WHERE status = ?";
 		
 		if(grad!=null && !grad.isEmpty()) {
 			 sql += " AND grad = ?";
@@ -256,6 +258,7 @@ public class Broker {
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			int parameterIndex = 1;
+			ps.setBoolean(parameterIndex++, false);
 
 	        if (grad != null && !grad.isEmpty()) {
 	            ps.setString(parameterIndex++, grad);
