@@ -137,8 +137,7 @@ public class Logovanje extends JFrame {
 		JButton btnAboutUs = new JButton("About us");
 		btnAboutUs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AboutUs au = new AboutUs();
-				au.setVisible(true);
+				AboutUs.au.setVisible(true);
 			}
 		});
 		btnAboutUs.setForeground(Color.BLACK);

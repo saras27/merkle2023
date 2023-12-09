@@ -9,11 +9,16 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextArea;
 import java.awt.Color;
+import java.awt.Button;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AboutUs extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	public static AboutUs au = new AboutUs();
 
 	
 	/**
@@ -21,7 +26,7 @@ public class AboutUs extends JFrame {
 	 */
 	public AboutUs() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 672, 433);
+		setBounds(100, 100, 709, 465);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -58,10 +63,19 @@ public class AboutUs extends JFrame {
 		txtrForAnyAdditional.setBounds(32, 254, 560, 105);
 		contentPane.add(txtrForAnyAdditional);
 		
+		JButton btnNewButton = new JButton("Home");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				au.setVisible(false);
+			}
+		});
+		btnNewButton.setBackground(new Color(221, 160, 221));
+		btnNewButton.setBounds(581, 384, 85, 21);
+		contentPane.add(btnNewButton);
+		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(221, 160, 221));
-		panel.setBounds(0, 0, 680, 410);
+		panel.setBounds(0, 0, 711, 448);
 		contentPane.add(panel);
 	}
-
 }
