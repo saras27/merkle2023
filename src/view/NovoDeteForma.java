@@ -33,6 +33,7 @@ public class NovoDeteForma extends JFrame {
 	private JTextField tf_Age;
 	private int idDete;
 	private DefaultTableModel dtm = new DefaultTableModel();
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -52,30 +53,30 @@ public class NovoDeteForma extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Name:");
-		lblNewLabel.setBounds(54, 55, 88, 13);
+		lblNewLabel.setBounds(54, 38, 88, 13);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Surname:");
-		lblNewLabel_1.setBounds(54, 95, 70, 13);
+		lblNewLabel_1.setBounds(54, 67, 70, 13);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Address:");
-		lblNewLabel_2.setBounds(54, 158, 70, 13);
+		lblNewLabel_2.setBounds(54, 124, 70, 13);
 		contentPane.add(lblNewLabel_2);
 		
 		tf_name = new JTextField();
-		tf_name.setBounds(140, 52, 96, 19);
+		tf_name.setBounds(150, 35, 96, 19);
 		contentPane.add(tf_name);
 		tf_name.setColumns(10);
 		
 		tf_surname = new JTextField();
-		tf_surname.setBounds(140, 92, 96, 19);
+		tf_surname.setBounds(150, 64, 96, 19);
 		contentPane.add(tf_surname);
 		tf_surname.setColumns(10);
 		
 		tf_address = new JTextField();
 		tf_address.setColumns(10);
-		tf_address.setBounds(140, 152, 96, 19);
+		tf_address.setBounds(150, 121, 96, 19);
 		contentPane.add(tf_address);
 		
 		JButton btnCreate = new JButton("Create");
@@ -93,7 +94,7 @@ public class NovoDeteForma extends JFrame {
 				refresh();
 			}
 		});
-		btnCreate.setBounds(150, 198, 85, 21);
+		btnCreate.setBounds(150, 225, 85, 21);
 		contentPane.add(btnCreate);
 		
 		JButton btnUpdate = new JButton("Update");
@@ -106,7 +107,7 @@ public class NovoDeteForma extends JFrame {
 				refresh();
 			}
 		});
-		btnUpdate.setBounds(57, 229, 85, 21);
+		btnUpdate.setBounds(54, 256, 85, 21);
 		contentPane.add(btnUpdate);
 		
 		JButton btnDelete = new JButton("Delete");
@@ -118,7 +119,7 @@ public class NovoDeteForma extends JFrame {
 				refresh();
 			}
 		});
-		btnDelete.setBounds(151, 229, 85, 21);
+		btnDelete.setBounds(151, 256, 85, 21);
 		contentPane.add(btnDelete);
 		
 		JButton btnNewWishlist = new JButton("New wishlist");
@@ -128,7 +129,7 @@ public class NovoDeteForma extends JFrame {
 				nlf.setVisible(true);
 			}
 		});
-		btnNewWishlist.setBounds(57, 260, 179, 21);
+		btnNewWishlist.setBounds(54, 287, 179, 21);
 		contentPane.add(btnNewWishlist);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -150,13 +151,22 @@ public class NovoDeteForma extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		JLabel lblNewLabel_3 = new JLabel("Age");
-		lblNewLabel_3.setBounds(54, 128, 45, 13);
+		lblNewLabel_3.setBounds(54, 95, 45, 13);
 		contentPane.add(lblNewLabel_3);
 		
 		tf_Age = new JTextField();
-		tf_Age.setBounds(140, 121, 96, 19);
+		tf_Age.setBounds(150, 92, 96, 19);
 		contentPane.add(tf_Age);
 		tf_Age.setColumns(10);
+		
+		JLabel lblNewLabel_4 = new JLabel("Town:");
+		lblNewLabel_4.setBounds(54, 153, 45, 13);
+		contentPane.add(lblNewLabel_4);
+		
+		textField = new JTextField();
+		textField.setBounds(150, 150, 96, 19);
+		contentPane.add(textField);
+		textField.setColumns(10);
 		
 		Object[] kolone = {"ID","NAME","SURNAME","AGE","ADDRESS"};
 		dtm.addColumn(kolone[0]);
