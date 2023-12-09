@@ -13,6 +13,13 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import java.awt.event.KeyAdapter;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
+
+import javax.swing.JSplitPane;
+import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 
 public class Logovanje extends JFrame {
 
@@ -50,15 +57,17 @@ public class Logovanje extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Username:");
-		lblNewLabel.setBounds(40, 96, 99, 13);
+		lblNewLabel.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
+		lblNewLabel.setBounds(121, 137, 99, 13);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Password:");
-		lblNewLabel_1.setBounds(40, 134, 82, 13);
+		lblNewLabel_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
+		lblNewLabel_1.setBounds(121, 175, 82, 13);
 		contentPane.add(lblNewLabel_1);
 		
 		tf_user = new JTextField();
-		tf_user.setBounds(127, 93, 145, 19);
+		tf_user.setBounds(208, 134, 145, 19);
 		contentPane.add(tf_user);
 		tf_user.setColumns(10);
 		
@@ -72,28 +81,47 @@ public class Logovanje extends JFrame {
 				
 			}
 		});
-		passwordField.setBounds(127, 131, 145, 19);
+		passwordField.setBounds(208, 172, 145, 19);
 		
 		contentPane.add(passwordField);
 		
 		JButton btnLogin = new JButton("Log As Admin");
+		btnLogin.setForeground(new Color(0, 0, 0));
+		btnLogin.setBackground(new Color(221, 160, 221));
+		btnLogin.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				login();
 			}
 		});
-		btnLogin.setBounds(40, 188, 232, 21);
+		btnLogin.setBounds(121, 229, 232, 21);
 		contentPane.add(btnLogin);
 		
 		JButton btnExploreWishlists = new JButton("Explore Wishlists");
+		btnExploreWishlists.setBackground(new Color(221, 160, 221));
+		btnExploreWishlists.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
 		btnExploreWishlists.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ExploreView ev = new ExploreView();
 				ev.setVisible(true);
 			}
 		});
-		btnExploreWishlists.setBounds(40, 219, 232, 21);
+		btnExploreWishlists.setBounds(121, 260, 232, 21);
 		contentPane.add(btnExploreWishlists);
+		
+		JLabel lblNewLabel_2 = new JLabel("KindHeartGifts");
+		lblNewLabel_2.setForeground(new Color(224, 255, 255));
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 28));
+		lblNewLabel_2.setBounds(121, 34, 232, 57);
+		contentPane.add(lblNewLabel_2);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(221, 160, 221));
+		panel.setForeground(new Color(221, 160, 221));
+		panel.setBounds(0, 0, 487, 336);
+		contentPane.add(panel);
+		
 	}
 	
 	protected void login() {
