@@ -8,9 +8,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import java.awt.event.KeyAdapter;
 
 public class Logovanje extends JFrame {
 
@@ -61,15 +63,47 @@ public class Logovanje extends JFrame {
 		tf_user.setColumns(10);
 		
 		passwordField = new JPasswordField();
+		passwordField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode()==KeyEvent.VK_ENTER) {
+						login();
+				}
+				
+			}
+		});
 		passwordField.setBounds(127, 131, 145, 19);
+		
 		contentPane.add(passwordField);
 		
 		JButton btnLogin = new JButton("Log As Admin");
-		btnLogin.setBounds(37, 188, 114, 21);
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				login();
+			}
+		});
+		btnLogin.setBounds(40, 188, 232, 21);
 		contentPane.add(btnLogin);
 		
 		JButton btnExploreWishlists = new JButton("Explore Wishlists");
-		btnExploreWishlists.setBounds(158, 188, 114, 21);
+		btnExploreWishlists.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ExploreView ev = new ExploreView();
+				ev.setVisible(true);
+			}
+		});
+		btnExploreWishlists.setBounds(40, 219, 232, 21);
 		contentPane.add(btnExploreWishlists);
+	}
+	
+	protected void login() {
+		// TODO Auto-generated method stub
+		String user=tf_user.getText();
+	    String pass=String.valueOf(passwordField.getPassword());
+	    
+	    if(user.equals("admin") && pass.equals("admin")) {
+	    	MedjuFormaAdmin mf= new MedjuFormaAdmin();
+	    	mf.setVisible(true);
+	    }
 	}
 }
