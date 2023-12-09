@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import kontroler.Kontroler;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -73,6 +74,7 @@ public class KorisnikForma extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Kontroler.getInstanca().upisiKorisnika(tf_name.getText(),tf_surname.getText(),tf_mail.getText(),tf_phone.getText(),id_dete);
 		        Kontroler.getInstanca().updateStatusDeteta(id_dete);
+		        JOptionPane.showMessageDialog(contentPane, "Thank you for your support!", "Request Received", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		btnNewButton.setBounds(209, 224, 85, 21);

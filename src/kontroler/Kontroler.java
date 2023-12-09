@@ -107,4 +107,20 @@ public class Kontroler {
 
 		
 	}
+
+	public List<Podatak> ucitajPodatkePretrage(String pretraga) {
+		List<Podatak> lista = new ArrayList();
+		Broker.getInstanca().otvoriKonekciju();
+		lista = Broker.getInstanca().ucitajPodatkePretrageIzBaze(pretraga);
+		Broker.getInstanca().zatvoriKonekciju();
+		return lista;
+	}
+
+	public List<Podatak> filtriraj(String grad, String odgod, String dogod) {
+		List<Podatak> lista = new ArrayList();
+		Broker.getInstanca().otvoriKonekciju();
+		lista = Broker.getInstanca().ucitajPodatkePretrageIzBaze(grad,odgod,dogod);
+		Broker.getInstanca().zatvoriKonekciju();
+		return lista;
+	}
 }

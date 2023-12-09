@@ -208,4 +208,81 @@ public class Broker {
 		}
 		
 	}
+
+	public List<Podatak> ucitajPodatkePretrageIzBaze(String pretraga) {
+		List<Podatak> lista = new ArrayList();
+		
+		String sql = "SELECT * FROM dete "
+				+ "INNER JOIN wishlista ON dete.id_dete=wishlista.id_dete WHERE grad LIKE ?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, "%"+pretraga+"%");
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				Podatak p = new Podatak();
+				p.setIme(rs.getString("ime"));
+				p.setGodine(rs.getInt("godine"));
+				p.setLista(rs.getString("lista"));
+				p.setIdDete(rs.getInt("id_dete"));
+				p.setGrad(rs.getString("grad"));
+				lista.add(p);
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+		return lista;
+	}
+
+	public List<Podatak> ucitajPodatkePretrageIzBaze(String grad, String odgod, String dogod) {
+		List<Podatak> lista = new ArrayList();
+		
+		String sql = "SELECT * FROM dete "
+				+ "INNER JOIN wishlista ON dete.id_dete=wishlista.id_dete WHERE 1=1";
+		
+		if(grad!=null && !grad.isEmpty()) {
+			 sql += " AND grad = ?";
+		}
+		
+		 if (odgod != null && !odgod.isEmpty()) {
+		        sql += " AND godine > ?";
+		    }
+		 
+		 if (dogod != null && !dogod.isEmpty()) {
+		        sql += " AND godine < ?";
+		    }
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			int parameterIndex = 1;
+
+	        if (grad != null && !grad.isEmpty()) {
+	            ps.setString(parameterIndex++, grad);
+	        }
+	        
+	        if (odgod != null && !odgod.isEmpty()) {
+	            ps.setInt(parameterIndex++, Integer.parseInt(odgod));
+	        }
+
+	        if (dogod != null && !dogod.isEmpty()) {
+	            ps.setInt(parameterIndex++, Integer.parseInt(dogod));
+	        }
+
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				Podatak p = new Podatak();
+				p.setIme(rs.getString("ime"));
+				p.setGodine(rs.getInt("godine"));
+				p.setLista(rs.getString("lista"));
+				p.setIdDete(rs.getInt("id_dete"));
+				p.setGrad(rs.getString("grad"));
+				lista.add(p);
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+		return lista;
+	}
 }
