@@ -7,6 +7,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import kontroler.Kontroler;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -20,6 +23,7 @@ public class KorisnikForma extends JFrame implements ActionListener{
 	private JTextField tf_surname;
 	private JTextField tf_phone;
 	private JTextField tf_mail;
+	private int id_dete;
 	
 	
 	JButton btnNewButton;
@@ -30,7 +34,8 @@ public class KorisnikForma extends JFrame implements ActionListener{
 	/**
 	 * Create the frame.
 	 */
-	public KorisnikForma() {
+	public KorisnikForma(int id_deteta) {
+		id_dete=id_deteta;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 575, 380);
 		contentPane = new JPanel();
@@ -94,6 +99,9 @@ public class KorisnikForma extends JFrame implements ActionListener{
 	        } else {
 	            JOptionPane.showMessageDialog(btnNewButton, "Thank you for your kindness", "Thank you note", JOptionPane.PLAIN_MESSAGE);
 	        }
+	        
+	        Kontroler.getInstanca().upisiKorisnika(tf_name.getText(),tf_surname.getText(),tf_mail.getText(),tf_phone.getText(),id_dete);
+	        Kontroler.getInstanca().updateStatusDeteta(id_dete);
 	    }
 		
 	}

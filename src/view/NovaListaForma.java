@@ -52,7 +52,8 @@ public class NovaListaForma extends JFrame {
 		btnAddItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				wishlist=wishlist+"\n"+tf_item.getText();
-				textArea.append(tf_item.getText());
+				textArea.append(tf_item.getText()+"\n");
+				tf_item.setText("");
 			}
 		});
 		btnAddItem.setBounds(197, 141, 85, 21);
@@ -75,6 +76,7 @@ public class NovaListaForma extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Dete d = (Dete)comboBox_Child.getSelectedItem();
 				Kontroler.getInstanca().dodajListu(d.getId(),wishlist);
+				textArea.setText("");
 			}
 		});
 		btnNewButton.setBounds(197, 184, 85, 21);

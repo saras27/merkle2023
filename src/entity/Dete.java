@@ -66,6 +66,10 @@ public class Dete {
 	public void setGrad(String grad) {
 		this.grad = grad;
 	}
+	@Override
+	public String toString() {
+		return ime+" "+godine;
+	}
 	
 	
 	

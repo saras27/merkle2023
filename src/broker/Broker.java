@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entity.Dete;
+import entity.Korisnik;
 import entity.Podatak;
 import entity.Wishlist;
 
@@ -56,8 +57,8 @@ public class Broker {
 	public List<Podatak> ucitajPodatkeIzBaze() {
 		List<Podatak> lista = new ArrayList();
 		
-		String sql = "SELECT  dete,id_dete,dete.ime,dete.godine,wishlista.lista FROM"
-				+ " dete INNER JOIN wishlista ON dete.id_dete=wishlista.id_dete";
+		String sql = "SELECT dete.id_dete, dete.ime, dete.godine, wishlista.lista FROM dete "
+				+ "INNER JOIN wishlista ON dete.id_dete=wishlista.id_dete";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -161,6 +162,40 @@ public class Broker {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, w.getId_deteta());
 			ps.setString(2, w.getPoklon());
+			
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+		
+	}
+
+	public void upisiKorisnikaUBazu(Korisnik k) {
+		// TODO Auto-generated method stub
+		String sql = "INSERT INTO korisnik (ime,prezime,telefon,emial,id_dete) VALUES (?,?,?,?,?)";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, k.getIme());
+			ps.setString(2, k.getPrezime());
+			ps.setString(3, k.getBroj_telefona());
+			ps.setString(4, k.getEmail());
+			ps.setInt(5, k.getId_deteta());
+			
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+	}
+
+	public void updateStatusUBazi(int id_dete) {
+		// TODO Auto-generated method stub
+		String sql = "UPDATE dete SET status=? WHERE id_dete=?";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setBoolean(1, true);
+			ps.setInt(2, id_dete);
 			
 			ps.executeUpdate();
 		} catch (SQLException e) {
