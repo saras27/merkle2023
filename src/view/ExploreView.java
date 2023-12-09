@@ -27,7 +27,7 @@ public class ExploreView extends JFrame {
 	private DefaultTableModel dtm = new DefaultTableModel();
 	private JButton btnNewButton;
 	private JTextArea textArea;
-	private id_dete;
+	private int id_dete;
 	
 
 	/**
@@ -87,10 +87,11 @@ public class ExploreView extends JFrame {
 		btnNewButton.setVisible(false);
 		contentPane.add(btnNewButton);
 		
-		Object[] kolona = {"NAME","AGE","WISHLIST"};
+		Object[] kolona = {"NAME","AGE","CITY","WISHLIST"};
 		dtm.addColumn(kolona[0]);
 		dtm.addColumn(kolona[1]);
 		dtm.addColumn(kolona[2]);
+		dtm.addColumn(kolona[3]);
 		
 		prikaziPodatke();
 	}
@@ -98,7 +99,7 @@ public class ExploreView extends JFrame {
 	private void prikaziPodatke() {
 		dtm.setRowCount(0);
 		for (Podatak p : Kontroler.getInstanca().ucitajPodatke()) {
-			Object[] red = {p.getIme(),p.getGodine(),p.getLista()};
+			Object[] red = {p.getIme(),p.getGodine(),p.getGrad(),p.getLista()};
 			dtm.addRow(red);
 		}
 		

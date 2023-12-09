@@ -6,7 +6,16 @@ public class Podatak {
 	private int godine;
 	private String lista;
 	private int idDete;
+	private String grad;
 	
+	
+	
+	public String getGrad() {
+		return grad;
+	}
+	public void setGrad(String grad) {
+		this.grad = grad;
+	}
 	public int getIdDete() {
 		return idDete;
 	}

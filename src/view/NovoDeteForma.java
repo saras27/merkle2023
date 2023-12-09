@@ -85,8 +85,9 @@ public class NovoDeteForma extends JFrame {
 				String ime = tf_name.getText();
 				String prezime = tf_surname.getText();
 				String adresa = tf_address.getText();
+				String grad = textField.getText();
 				int godine = Integer.parseInt(tf_Age.getText());
-				Kontroler.getInstanca().upisiDete(ime,prezime,godine,adresa);
+				Kontroler.getInstanca().upisiDete(ime,prezime,godine,adresa,grad);
 				tf_name.setText("");
 				tf_surname.setText("");
 				tf_address.setText("");
@@ -127,7 +128,7 @@ public class NovoDeteForma extends JFrame {
 				int red=table.getSelectedRow();
 				idDete = Integer.parseInt(table.getModel().getValueAt(red, 0).toString());
 				int godine = Integer.parseInt(tf_Age.getText());
-				Kontroler.getInstanca().updateDete(idDete,tf_name.getText(),tf_surname.getText(),godine,tf_address.getText());
+				Kontroler.getInstanca().updateDete(idDete,tf_name.getText(),tf_surname.getText(),godine,tf_address.getText(),textField.getText());
 				refresh();
 			}
 		});

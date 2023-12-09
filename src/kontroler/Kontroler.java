@@ -31,12 +31,13 @@ public class Kontroler {
 		return lista;
 	}
 
-	public void upisiDete(String ime, String prezime, int godine, String adresa) {
+	public void upisiDete(String ime, String prezime, int godine, String adresa,String grad) {
 		Dete d = new Dete();
 		d.setIme(ime);
 		d.setGodine(godine);
 		d.setPrezime(prezime);
 		d.setAdresa(adresa);
+		d.setGrad(grad);
 		Broker.getInstanca().otvoriKonekciju();
 		Broker.getInstanca().upisiDeteUBazu(d);
 		Broker.getInstanca().zatvoriKonekciju();
@@ -51,13 +52,14 @@ public class Kontroler {
 		return lista;
 	}
 
-	public void updateDete(int idDete, String ime, String prezime, int godine, String adresa) {
+	public void updateDete(int idDete, String ime, String prezime, int godine, String adresa,String grad) {
 		Dete d = new Dete();
 		d.setAdresa(adresa);
 		d.setId(idDete);
 		d.setIme(ime);
 		d.setPrezime(prezime);
 		d.setGodine(godine);
+		d.setGrad(grad);
 		
 		Broker.getInstanca().otvoriKonekciju();
 		Broker.getInstanca().updateDeteUBazi(d);

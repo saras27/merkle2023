@@ -57,7 +57,7 @@ public class Broker {
 	public List<Podatak> ucitajPodatkeIzBaze() {
 		List<Podatak> lista = new ArrayList();
 		
-		String sql = "SELECT dete.id_dete, dete.ime, dete.godine, wishlista.lista FROM dete "
+		String sql = "SELECT * FROM dete "
 				+ "INNER JOIN wishlista ON dete.id_dete=wishlista.id_dete";
 		
 		try {
@@ -69,6 +69,7 @@ public class Broker {
 				p.setGodine(rs.getInt("godine"));
 				p.setLista(rs.getString("lista"));
 				p.setIdDete(rs.getInt("id_dete"));
+				p.setGrad(rs.getString("grad"));
 				lista.add(p);
 			}
 		} catch (SQLException e) {
@@ -79,13 +80,14 @@ public class Broker {
 	}
 
 	public void upisiDeteUBazu(Dete d) {
-		String sql = "INSERT INTO dete(ime,prezime,godine,adresa) VALUES (?,?,?,?)";
+		String sql = "INSERT INTO dete(ime,prezime,godine,adresa,grad) VALUES (?,?,?,?,?)";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, d.getIme());
 			ps.setString(2, d.getPrezime());
 			ps.setInt(3, d.getGodine());
 			ps.setString(4, d.getAdresa());
+			ps.setString(5, d.getGrad());
 			
 			ps.executeUpdate();
 		} catch (SQLException e) {
@@ -112,6 +114,7 @@ public class Broker {
 				d.setGodine(rs.getInt("godine"));
 				d.setOdabrano(false);
 				d.setPrezime(rs.getString("prezime"));
+				d.setGrad(rs.getString("grad"));
 				lista.add(d);
 			}
 		} catch (SQLException e) {
@@ -124,14 +127,15 @@ public class Broker {
 
 	public void updateDeteUBazi(Dete d) {
 		// TODO Auto-generated method stub
-		String sql = "UPDATE dete SET ime=?,prezime=?,godine=?,adresa=? WHERE id_dete=?";
+		String sql = "UPDATE dete SET ime=?,prezime=?,godine=?,adresa=?,grad=? WHERE id_dete=?";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, d.getIme());
 			ps.setString(2, d.getPrezime());
 			ps.setInt(3, d.getGodine());
 			ps.setString(4, d.getAdresa());
-			ps.setInt(5, d.getId());
+			ps.setString(5, d.getGrad());
+			ps.setInt(6, d.getId());
 			
 			ps.executeUpdate();
 		} catch (SQLException e) {
