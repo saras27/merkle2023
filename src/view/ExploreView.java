@@ -6,6 +6,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+
+import entity.Podatak;
+import kontroler.Kontroler;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
@@ -20,6 +24,7 @@ public class ExploreView extends JFrame {
 	private JTable table;
 	private DefaultTableModel dtm = new DefaultTableModel();
 	private JButton btnNewButton;
+	private JTextArea textArea;
 	
 
 	/**
@@ -60,11 +65,12 @@ public class ExploreView extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				int red=table.getSelectedRow();
 				btnNewButton.setVisible(true);
+				textArea.setText(table.getModel().getValueAt(red, 2).toString());
 			}
 		});
 		scrollPane.setViewportView(table);
 		
-		JTextArea textArea = new JTextArea();
+		textArea = new JTextArea();
 		textArea.setBounds(426, 37, 183, 307);
 		contentPane.add(textArea);
 		
@@ -78,6 +84,15 @@ public class ExploreView extends JFrame {
 		dtm.addColumn(kolona[1]);
 		dtm.addColumn(kolona[2]);
 		
+		prikaziPodatke();
+	}
+
+	private void prikaziPodatke() {
+		dtm.setRowCount(0);
+		for (Podatak p : Kontroler.getInstanca().ucitajPodatke()) {
+			Object[] red = {p.getIme(),p.getGodine(),p.getLista()};
+			dtm.addRow(red);
+		}
 		
 	}
 

@@ -6,6 +6,10 @@ import java.awt.TextArea;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import entity.Dete;
+import kontroler.Kontroler;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -21,7 +25,7 @@ public class NovaListaForma extends JFrame {
 	private JTextField tf_item;
 	private String wishlist = "";
 	private JTextArea textArea;
-
+	private JComboBox comboBox_Child;
 
 	/**
 	 * Create the frame.
@@ -58,7 +62,7 @@ public class NovaListaForma extends JFrame {
 		textArea.setBounds(300, 34, 221, 265);
 		contentPane.add(textArea);
 		
-		JComboBox comboBox_Child = new JComboBox();
+		comboBox_Child = new JComboBox();
 		comboBox_Child.setBounds(40, 63, 242, 21);
 		contentPane.add(comboBox_Child);
 		
@@ -67,7 +71,23 @@ public class NovaListaForma extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		JButton btnNewButton = new JButton("Create");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Dete d = (Dete)comboBox_Child.getSelectedItem();
+				Kontroler.getInstanca().dodajListu(d.getId(),wishlist);
+			}
+		});
 		btnNewButton.setBounds(197, 184, 85, 21);
 		contentPane.add(btnNewButton);
+		
+		postaviPodatke();
+	}
+
+
+	
+	private void postaviPodatke() {
+		for(Dete d:Kontroler.getInstanca().ucitajDecu()) {
+			comboBox_Child.addItem(d);
+		}
 	}
 }
