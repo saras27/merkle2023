@@ -94,6 +94,30 @@ public class NovoDeteForma extends JFrame {
 				refresh();
 			}
 		});
+		
+//		btnCreate.addActionListener(new ActionListener() {
+//		    public void actionPerformed(ActionEvent e) {
+//		        String ime = tf_name.getText();
+//		        String prezime = tf_surname.getText();
+//		        String adresa = tf_address.getText();
+//		        String ageText = tf_Age.getText();
+//
+//		        
+//		        if (ime.isEmpty() || prezime.isEmpty() || adresa.isEmpty() || ageText.isEmpty()) {
+//		          JOptionPane.showMessageDialog(NovoDeteForma.this, "Please fill in all fields", "Error", JOptionPane.ERROR_MESSAGE);
+//		          return; 
+//		        }
+//
+//		        // All fields are filled, proceed with creating the entry
+//		        int godine = Integer.parseInt(ageText);
+//		        Kontroler.getInstanca().upisiDete(ime, prezime, godine, adresa);
+//		        tf_name.setText("");
+//		        tf_surname.setText("");
+//		        tf_address.setText("");
+//		        tf_Age.setText("");
+//		        refresh();
+//		    }
+//		});
 		btnCreate.setBounds(150, 225, 85, 21);
 		contentPane.add(btnCreate);
 		
@@ -186,4 +210,6 @@ public class NovoDeteForma extends JFrame {
 			dtm.addRow(red);
 		}
 	}
+	
+	
 }
